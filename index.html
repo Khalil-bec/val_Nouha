@@ -185,18 +185,27 @@
       launchHearts();
     }
 
-    function launchHearts() {
-      for (let i = 0; i < 25; i++) {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.innerText = '💖';
-        heart.style.left = Math.random() * window.innerWidth + 'px';
-        heart.style.top = window.innerHeight - 20 + 'px';
-        document.body.appendChild(heart);
+   function launchHearts() {
+  const emojis = ['💖','💘','💕','❤️','😍'];
 
-        setTimeout(() => heart.remove(), 2000);
-      }
-    }
+  for (let i = 0; i < 60; i++) {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+
+    // Spawn ANYWHERE on the screen
+    heart.style.left = Math.random() * window.innerWidth + 'px';
+    heart.style.top = Math.random() * window.innerHeight + 'px';
+
+    // Random size for depth effect
+    const size = 18 + Math.random() * 26;
+    heart.style.fontSize = size + 'px';
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 2000);
+  }
+}
   </script>
 
 </body>
